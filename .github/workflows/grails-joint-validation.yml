@@ -58,7 +58,7 @@ jobs:
         timeout-minutes: 60
 
       - name: Set CI_GROOVY_VERSION for Grails
-        run: echo "::set-env name=CI_GROOVY_VERSION::$(cat gradle.properties | grep groovyVersion | cut -d\= -f2 |  tr -d '[:space:]')"
+        run: echo "CI_GROOVY_VERSION=$(cat gradle.properties | grep groovyVersion | cut -d\= -f2 |  tr -d '[:space:]')" >> $GITHUB_ENV
       - name: echo CI_GROOVY_VERSION
         run: echo $CI_GROOVY_VERSION
       - name: Build Grails
